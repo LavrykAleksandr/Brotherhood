@@ -7,11 +7,14 @@
 	</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 	</script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
 	</script>
 	<script src="js/owl.carousel.min.js"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<script type="module" src="js/index.js"></script>
 	<link rel="stylesheet" href="css/owl.carousel.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -220,41 +223,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="visible-lg black container-fluid">
+	<div class="black container-fluid">
 		<div class="container">
 			<div class="row">
 				<h3 class="text-center text-uppercase"><strong>Наші дилери</strong></h3>
 			</div>
 		</div>
 	</div>
-	<div class="visible-lg dealers container-fluid">
-		<div class="container">
-			<div class="row">
-				<div class="">
-				<a href="#" class="lviv"></a>
-				<a href="#" class="chernivtsi"></a>
-				<a href="#" class="vinnytsia"></a>
-				<a href="#" class="zhytomyr"></a>
-				<a href="#" class="kyiv"></a>
-				<a href="#" class="chernihiv"></a>
-				<a href="#" class="odesa"></a>
-				<a href="#" class="mykolaiv"></a>
-				<a href="#" class="kherson"></a>
-				<a href="#" class="kryviy_rig"></a>
-				<a href="#" class="kirovohrad"></a>
-				<a href="#" class="cherkasy"></a>
-				<a href="#" class="kremenchuh"></a>
-				<a href="#" class="poltava"></a>
-				<a href="#" class="dnipro"></a>
-				<a href="#" class="zaporizhya"></a>
-				<a href="#" class="mariupol"></a>
-				<a href="#" class="donetsk"></a>
-				<a href="#" class="luhansk"></a>
-				<a href="#" class="kharkiv"></a>
-				<a href="#" class="sumy"></a>
-				</div>
-			</div>
-		</div>
+	<div class="dealers container-fluid" id="map"> 
 	</div>
 	<footer class="container-fluid header">
 		<div class="container">
@@ -302,6 +278,127 @@
 	        }
 	    }
 	})
-	
 	</script>
+	<script>
+	function myMap() {
+
+var map = new google.maps.Map(document.getElementById('map'), {
+zoom: 6,
+center: new google.maps.LatLng(50.47275070519404, 30.53001609956742),
+scrollwheel: true
+});
+
+var iconBase = 'images/';
+var icons = 
+{
+marker: { icon: iconBase + 'marker.png' }
+};
+var features = [
+{
+position: new google.maps.LatLng(50.47275070519404, 30.53001609956742),
+title: 'Київ',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(51.696595242099484, 31.233460089456553),
+title: 'Чернігів',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(51.09557518624098, 34.79143635291964),
+title: 'Суми',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(50.28851540682257, 36.205304653560674),
+title: 'Харків',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(48.80681455249168, 39.2816334722172),
+title: 'Луганськ',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(48.251203126091944, 37.759006071526855),
+title: 'Донецьк',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(47.3432086085356, 37.510413842842716),
+title: 'Маріуполь',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(46.803550734404816, 32.600717326330994),
+title: 'Херсон',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(47.216721860030226, 31.994773779069046),
+title: 'Миколаїв',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(46.77163591013174, 30.751812635648356),
+title: 'Одеса',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(49.829683072249324, 34.527307108788705),
+title: 'Полтава',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(49.15404814150008, 33.42196399395294),
+title: 'Кременчуг',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(48.66335238990211, 35.008954551864214),
+title: 'Дніпро',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(48.064643706890365, 35.13325066620629),
+title: 'Запоріжжя',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(48.033484507206644, 32.77162449370697),
+title: 'Кривий ріг',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(48.72488629773463, 32.24336600775318),
+title: 'Кропивницький',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(49.6590031751726, 32.05692183624008),
+title: 'Черкаси',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(50.46686496771012, 28.59216764895491),
+title: 'Житомир',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(49.46753231372033, 28.452334520320083),
+title: 'Вінниця',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(48.48859777418628, 25.904264190098598),
+title: 'Чернівці',
+type: 'marker',
+}, {
+position: new google.maps.LatLng(50.07959281498541, 23.99321143208929),
+title: 'Львів',
+type: 'marker',
+}
+];
+
+var contentString = '';
+var infowindow = new google.maps.InfoWindow({ content: contentString });
+
+features.forEach(function(feature) {
+var marker = new google.maps.Marker({
+position: feature.position,
+icon: icons[feature.type].icon,
+title: feature.title,
+animation: google.maps.Animation.DROP,
+map: map
+});
+marker.addListener('click', function() {
+infowindow.setContent(this.title);
+infowindow.open(map, marker);
+});
+});
+}
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAskRr5f44PWVxalAi_hXzIjIvHoTt6HA&callback=myMap"></script>
 </body>
